@@ -1,9 +1,10 @@
 class Node:
     def __init__(self, data):
         self.data = data
-        self.next = None
+        self.next = self
+        self.prev = self
 
-class CircularLinkedList:
+class CircularDoublyLinkedList:
     def __init__(self):
         self.head = None
 
@@ -11,27 +12,26 @@ class CircularLinkedList:
         new_node = Node(data)
         if not self.head:
             self.head = new_node
-            new_node.next = new_node
-            return
-        temp = self.head
-        while temp.next != self.head:
-            temp = temp.next
-        temp.next = new_node
-        new_node.next = self.head
+        else:
+            tail = self.head.prev
+            tail.next = new_node
+            new_node.prev = tail
+            new_node.next = self.head
+            self.head.prev = new_node
 
     def display(self):
         if not self.head:
             return
         temp = self.head
         while True:
-            print(temp.data, end=" -> ")
+            print(temp.data, end=" <-> ")
             temp = temp.next
             if temp == self.head:
                 break
         print("(Back to head)")
 
-cll = CircularLinkedList()
-cll.insert(100)
-cll.insert(200)
-cll.insert(300)
-cll.display()
+cdll = CircularDoublyLinkedList()
+cdll.insert(10)
+cdll.insert(20)
+cdll.insert(30)
+cdll.display()
