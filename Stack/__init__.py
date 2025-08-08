@@ -1,10 +1,12 @@
 stack = []
 
-stack.append(7)
-stack.append(14)
+items = int(input("Enter the number for the list: "))
 
+for _ in range(1,items+1):
+    number = int(input("Enter number {}: ".format(_)))
+    stack.append(number)
+    
+print(f"\nOriginal list: {stack}")    
+print(f"Number {stack[-1]} popped out from the list as it was the last number in the list.")
 stack.pop()
-
-print(stack[-1])
-
-print(len(stack) == 0)
+print(f"New list: {stack}")
