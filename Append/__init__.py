@@ -1,8 +1,14 @@
-list = [1, 2, 3, 4,5]
+n = []
 
-print(list)
-insert = int(input("Enter a number to insert in the list: "))
-index = int(input("Enter the index: "))
+m = [1, 2, 3,]
+m2 = [6, 7, 8, ]
+m3 = [9, 10, 11]
 
-list.insert(index, insert)
-print(list)
+n.append(m)
+n.append(m2)   
+n.append(m3)
+
+for m in range(len(n)):
+    for j in range(len(n[m])):
+        print(n[m][j], end=" ")
+    print()
